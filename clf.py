@@ -3,9 +3,9 @@ import torch
 from PIL import Image
 
 def predict(image_path):
-    resnet = models.resnet101(pretrained=True)
-
-    #https://pytorch.org/docs/stable/torchvision/models.html
+    resnet = models.resnet101()
+    
+    resnet.load_state_dict(torch.load('models\\resnet101-5d3b4d8f.pth'))
     transform = transforms.Compose([
     transforms.Resize(256),
     transforms.CenterCrop(224),
